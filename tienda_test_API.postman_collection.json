@@ -1,0 +1,1087 @@
+{
+	"info": {
+		"_postman_id": "36396618-7c3a-4ca0-b011-77a3fb0a6b2e",
+		"name": "tienda_test_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1- API Usuarios",
+			"item": [
+				{
+					"name": "login usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/usuarios/login?user=admininicial&password=admin123456",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"usuarios",
+								"login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "admininicial"
+								},
+								{
+									"key": "password",
+									"value": "admin123456"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar todos los usuarios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/usuarios/listar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"usuarios",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/usuarios/10999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"usuarios",
+								"10999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cedula_usuario\":10999,\r\n    \"email_usuario\":\"usuario9@falso.com\",\r\n    \"nombre_usuario\":\"Nombre9 Apellido9\",\r\n    \"password\":\"pass-user\",\r\n    \"usuario\":\"username9\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/usuarios/guardar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"usuarios",
+								"guardar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar usuario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `",
+									"<script src=\"https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js\"></script>",
+									"<link",
+									"  rel=\"stylesheet\"",
+									"  href=\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/default.min.css\"",
+									"/>",
+									"<script src=\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js\"></script>",
+									"<link",
+									"  rel=\"stylesheet\"",
+									"  href=\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/googlecode.min.css\"",
+									"/>",
+									"<script type=\"text/javascript\">",
+									"  function getContent (orig) {",
+									"    var converter = new showdown.Converter(),",
+									"      text = orig,",
+									"      html = converter.makeHtml(text);",
+									"    return html;",
+									"  }",
+									"</script>",
+									"<h3>{{response.title}}</h3>",
+									"<ul>",
+									"  <div id=\"notes\"></div>",
+									"  {{#if response.next}}",
+									"  <h4>Next</h4>",
+									"  <div id=\"next\"></div>",
+									"  {{/if}} {{#if response.error}}",
+									"  <h3 style=\"color: red\">Error 😢</h3>",
+									"  <p><strong>{{response.error}}</strong></p>",
+									"  {{/if}}",
+									"  <script type=\"text/javascript\">",
+									"    if (\"{{json_info}}\".length > 0) document.write(\"<pre>{{json_info}}</pre>\");",
+									"  </script>",
+									"  <script type=\"text/javascript\">",
+									"    if (\"{{response.rip}}\".length > 0)",
+									"      document.write(getContent(\"{{response.rip}}\"));",
+									"  </script>",
+									"  <script type=\"text/javascript\">",
+									"    if (\"{{response.image}}\".length > 0)",
+									"      document.write(",
+									"        \"<img src='{{response.image}}' alt='postman steps' style='max-width: min(50vw, 500px); max-height: min(90vh, 600px)'/>\"",
+									"      );",
+									"  </script>",
+									"  <style>",
+									"    body {",
+									"      padding: 48px;",
+									"    }",
+									"  </style>",
+									"  <!--content to process before rendering-->",
+									"  <script type=\"text/javascript\">",
+									"    pm.getData(function (error, data) {",
+									"      let json_strings = [];",
+									"      let i;",
+									"      let infoArray = data.response.info;",
+									"",
+									"      var notes = \"<div id='notes'>\";",
+									"",
+									"      for (i = 0; i < infoArray.length; i++) {",
+									"        notes += getContent(infoArray[i].text);",
+									"",
+									"        if (infoArray[i].json_content) {",
+									"          notes +=",
+									"            \"<pre style='padding-left:20px'><code class='json'>\" +",
+									"            JSON.stringify(infoArray[i].json_content, null, 2) +",
+									"            \"</code></pre>\";",
+									"        }",
+									"",
+									"        if (infoArray[i].image) {",
+									"          notes += \"<img src='\" + infoArray[i].image + \"' alt='postman steps' style='max-height: min(90vh, 600px); max-width: min(50vw, 500px);'/>\";",
+									"        }",
+									"      }",
+									"",
+									"      notes += \"</div>\";",
+									"      document.getElementById(\"notes\").innerHTML = notes;",
+									"",
+									"      if (data.response.next && data.response.next.length) {",
+									"        const nextContent = data.response.next.reduce((html, item) => {",
+									"            html += getContent(item.text);",
+									"            if (item.image) {",
+									"              html += \"<img src='\" + item.image + \"' style='max-height: min(90vh, 500px); max-width: min(50vw, 500px);' alt='postman steps'/>\";",
+									"            }",
+									"            return html;",
+									"        }, '');",
+									"",
+									"        document.getElementById(\"next\").innerHTML = nextContent;",
+									"      }",
+									"",
+									"      hljs.initHighlighting();",
+									"    });",
+									"  </script>",
+									"</ul>",
+									"`;",
+									"",
+									"if(pm.response.headers.get(\"Content-Type\").includes(\"json\")){",
+									"    pm.visualizer.set(template, {",
+									"        response: pm.response.json(),",
+									"        json_info: JSON.stringify(pm.response.json().json_content)",
+									"    });",
+									"}",
+									"else if(pm.response.headers.get(\"Content-Type\").includes(\"html\")){",
+									"    pm.visualizer.set(`{{info}}`, {info:\"Hmm this seems to be HTML and not JSON - to start learning enter `learn-by-api.glitch.me/intro` in the address bar, choose GET method, and click Send!\"});",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cedula_usuario\":10999,\r\n    \"email_usuario\":\"jdoe@falso.com\",\r\n    \"nombre_usuario\":\"John Doe Sue Franco\",\r\n    \"password\":\"admin123456\",\r\n    \"usuario\":\"dance\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/usuarios/actualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"usuarios",
+								"actualizar"
+							]
+						},
+						"description": "crear usuario"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/usuarios/eliminar/10999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"usuarios",
+								"eliminar",
+								"10999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear admins inicial",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cedula_usuario\":0,\r\n    \"email_usuario\":\"admin_inicial@falso.com\",\r\n    \"nombre_usuario\":\"Administrador inicial\",\r\n    \"password\":\"1234\",\r\n    \"usuario\":\"admin123456\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/usuarios/guardar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"usuarios",
+								"guardar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2- API Clientes",
+			"item": [
+				{
+					"name": "listar todos los clientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/clientes/listar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"clientes",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar cliente por documento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/clientes/90999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"clientes",
+								"90999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cedula_cliente\": 90999,\r\n    \"direccion_cliente\": \"Avenida Siempreviva 9\",\r\n    \"email_cliente\": \"cliente9@falso.com\",\r\n    \"nombre_cliente\": \"Nombre Cliente9\",\r\n    \"telefono_cliente\": \"999-999-999\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/clientes/guardar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"clientes",
+								"guardar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"cedula_cliente\": 90999,\r\n     \"direccion_cliente\": \"Avenida Siempreviva 9\",\r\n     \"email_cliente\": \"jwick@falso.com\",\r\n     \"nombre_cliente\": \"John Wick\",\r\n     \"telefono_cliente\": \"999-999-999\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/clientes/actualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"clientes",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/clientes/eliminar/90999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"clientes",
+								"eliminar",
+								"90999"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3- API Proveedores",
+			"item": [
+				{
+					"name": "listar todos los proveedores",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/proveedores/listar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"proveedores",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar proveedor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/proveedores/50444",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"proveedores",
+								"50444"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear proveedor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nitproveedor\": 50444,\r\n    \"ciudad_proveedor\": \"Medellín, Antioquía\",\r\n    \"direccion_proveedor\": \"Avenida El Dorado4\",\r\n    \"nombre_proveedor\": \"Proveedor4\",\r\n    \"telefono_proveedor\": \"315 444 444\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/proveedores/guardar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"proveedores",
+								"guardar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar proveedor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `",
+									"<script src=\"https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js\"></script>",
+									"<link",
+									"  rel=\"stylesheet\"",
+									"  href=\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/default.min.css\"",
+									"/>",
+									"<script src=\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js\"></script>",
+									"<link",
+									"  rel=\"stylesheet\"",
+									"  href=\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/googlecode.min.css\"",
+									"/>",
+									"<script type=\"text/javascript\">",
+									"  function getContent (orig) {",
+									"    var converter = new showdown.Converter(),",
+									"      text = orig,",
+									"      html = converter.makeHtml(text);",
+									"    return html;",
+									"  }",
+									"</script>",
+									"<h3>{{response.title}}</h3>",
+									"<ul>",
+									"  <div id=\"notes\"></div>",
+									"  {{#if response.next}}",
+									"  <h4>Next</h4>",
+									"  <div id=\"next\"></div>",
+									"  {{/if}} {{#if response.error}}",
+									"  <h3 style=\"color: red\">Error 😢</h3>",
+									"  <p><strong>{{response.error}}</strong></p>",
+									"  {{/if}}",
+									"  <script type=\"text/javascript\">",
+									"    if (\"{{json_info}}\".length > 0) document.write(\"<pre>{{json_info}}</pre>\");",
+									"  </script>",
+									"  <script type=\"text/javascript\">",
+									"    if (\"{{response.rip}}\".length > 0)",
+									"      document.write(getContent(\"{{response.rip}}\"));",
+									"  </script>",
+									"  <script type=\"text/javascript\">",
+									"    if (\"{{response.image}}\".length > 0)",
+									"      document.write(",
+									"        \"<img src='{{response.image}}' alt='postman steps' style='max-width: min(50vw, 500px); max-height: min(90vh, 600px)'/>\"",
+									"      );",
+									"  </script>",
+									"  <style>",
+									"    body {",
+									"      padding: 48px;",
+									"    }",
+									"  </style>",
+									"  <!--content to process before rendering-->",
+									"  <script type=\"text/javascript\">",
+									"    pm.getData(function (error, data) {",
+									"      let json_strings = [];",
+									"      let i;",
+									"      let infoArray = data.response.info;",
+									"",
+									"      var notes = \"<div id='notes'>\";",
+									"",
+									"      for (i = 0; i < infoArray.length; i++) {",
+									"        notes += getContent(infoArray[i].text);",
+									"",
+									"        if (infoArray[i].json_content) {",
+									"          notes +=",
+									"            \"<pre style='padding-left:20px'><code class='json'>\" +",
+									"            JSON.stringify(infoArray[i].json_content, null, 2) +",
+									"            \"</code></pre>\";",
+									"        }",
+									"",
+									"        if (infoArray[i].image) {",
+									"          notes += \"<img src='\" + infoArray[i].image + \"' alt='postman steps' style='max-height: min(90vh, 600px); max-width: min(50vw, 500px);'/>\";",
+									"        }",
+									"      }",
+									"",
+									"      notes += \"</div>\";",
+									"      document.getElementById(\"notes\").innerHTML = notes;",
+									"",
+									"      if (data.response.next && data.response.next.length) {",
+									"        const nextContent = data.response.next.reduce((html, item) => {",
+									"            html += getContent(item.text);",
+									"            if (item.image) {",
+									"              html += \"<img src='\" + item.image + \"' style='max-height: min(90vh, 500px); max-width: min(50vw, 500px);' alt='postman steps'/>\";",
+									"            }",
+									"            return html;",
+									"        }, '');",
+									"",
+									"        document.getElementById(\"next\").innerHTML = nextContent;",
+									"      }",
+									"",
+									"      hljs.initHighlighting();",
+									"    });",
+									"  </script>",
+									"</ul>",
+									"`;",
+									"",
+									"if(pm.response.headers.get(\"Content-Type\").includes(\"json\")){",
+									"    pm.visualizer.set(template, {",
+									"        response: pm.response.json(),",
+									"        json_info: JSON.stringify(pm.response.json().json_content)",
+									"    });",
+									"}",
+									"else if(pm.response.headers.get(\"Content-Type\").includes(\"html\")){",
+									"    pm.visualizer.set(`{{info}}`, {info:\"Hmm this seems to be HTML and not JSON - to start learning enter `learn-by-api.glitch.me/intro` in the address bar, choose GET method, and click Send!\"});",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nitproveedor\": 50444,\r\n    \"ciudad_proveedor\": \"Bogotá D.C.\",\r\n    \"direccion_proveedor\": \"Avenida El Dorado4\",\r\n    \"nombre_proveedor\": \"Proveedor Felíz\",\r\n    \"telefono_proveedor\": \"315 444 444\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/proveedores/actualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"proveedores",
+								"actualizar"
+							]
+						},
+						"description": "crear usuario"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar proveedor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/proveedores/eliminar/50444",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"proveedores",
+								"eliminar",
+								"50444"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4- API Productos",
+			"item": [
+				{
+					"name": "consultar lista productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/productos/listar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"productos",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar producto por codigo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/productos/808006",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"productos",
+								"808006"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear producto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo_producto\":  808006,\r\n    \"ivacompra\": 19,\r\n    \"proveedor\": {\r\n        \"nitproveedor\": 50111\r\n        },\r\n    \"nombre_producto\": \"Gaseosa genérica\",\r\n    \"precio_compra\": 3000,\r\n    \"precio_venta\": 5100}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/productos/guardar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"productos",
+								"guardar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar proveedor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo_producto\":  808006,\r\n    \"ivacompra\": 19,\r\n    \"proveedor\": {\r\n        \"nitproveedor\": 50222\r\n        },\r\n    \"nombre_producto\": \"Gaseosa random\",\r\n    \"precio_compra\": 4000,\r\n    \"precio_venta\": 5100}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/productos/actualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"productos",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar proveedor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/productos/eliminar/808006",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"productos",
+								"eliminar",
+								"808006"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "5- API Ventas",
+			"item": [
+				{
+					"name": "listar ventas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/ventas/listar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"ventas",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar venta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/ventas/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"ventas",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "agregar ventas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cliente\": {\r\n        \"cedula_cliente\": 90111\r\n        },\r\n    \"usuario\": {\r\n        \"cedula_usuario\": 10111\r\n        },\r\n    \"ivaventa\": 19.0,\r\n    \"total_venta\": 0,\r\n    \"valor_venta\": 0\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/ventas/guardar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"ventas",
+								"guardar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar ventas",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo_venta\": 3,\r\n    \"cliente\": {\r\n        \"cedula_cliente\": 90111\r\n        },\r\n    \"usuario\": {\r\n        \"cedula_usuario\": 10111\r\n        },\r\n    \"ivaventa\": 19.0,\r\n    \"total_venta\": 3000,\r\n    \"valor_venta\": 2000\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/ventas/actualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"ventas",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar ventas",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/ventas/eliminar/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"ventas",
+								"eliminar",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "6- API DetalleVentas",
+			"item": [
+				{
+					"name": "listar detalle ventas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/detalleventas/listar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"detalleventas",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar detalle venta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/detalleventas/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"detalleventas",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "guardar detalle ventas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cantidad_producto\": 3,\r\n    \"producto\": {\"codigo_producto\": 808005 },\r\n    \"venta\": {\"codigo_venta\": 2 },\r\n    \"valor_total\": 31481.1,\r\n    \"valor_venta\": 165690.0,\r\n    \"valoriva\": 19.0}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/detalleventas/guardar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"detalleventas",
+								"guardar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar detalle ventas",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/detalleventas/actualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"detalleventas",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar detalle ventas",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/detalleventas/eliminar/999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"detalleventas",
+								"eliminar",
+								"999"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

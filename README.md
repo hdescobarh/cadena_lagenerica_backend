@@ -16,4 +16,4 @@ Este repositorio contiene la REST API desarrollada como parte del proyecto final
 
 - Script SQL para ingresar [datos de prueba](./insert_testing_data.sql)
 
-- JSON de Postman para realizar pruebas a la API (pendiente)
+- JSON de Postman para realizar [pruebas a la API ](./tienda_test_API.postman_collection.json)
