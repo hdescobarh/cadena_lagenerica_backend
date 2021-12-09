@@ -12,7 +12,7 @@ Este repositorio contiene la REST API desarrollada como parte del proyecto final
 
 ## Archivos adicionales
 
-- Script SQL para crear el esquema de [base de datos](./make_base_database.sql) e ingresar el usuario inicial. *username* = adminiinicial, *password* = admin123456.
+- Script SQL para crear el esquema de [base de datos](./make_base_database.sql) e ingresar el usuario inicial. *username* = admininicial, *password* = admin123456.
 
 - Script SQL para ingresar [datos de prueba](./insert_testing_data.sql)
 
