@@ -27,19 +27,17 @@ public class Product {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "nitproveedor")
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-	Supplier proveedor;	
+	private Supplier proveedor;	
 	
-	String nombre_producto;
+	private String nombre_producto;
 	
-	Double precio_compra;
+	private Double precio_compra;
 	
-	Double precio_venta;
+	private Double precio_venta;
 
 	protected Product() {
 		
 	}
-
-
 
 	public Product(Long codigo_producto, Double ivacompra, Supplier proveedor, String nombre_producto,
 			Double precio_compra, Double precio_venta) {

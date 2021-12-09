@@ -21,23 +21,23 @@ public class Sale {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long codigo_venta;
+	private Long codigo_venta;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cedula_cliente")
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-	Customer cliente;
+	private Customer cliente;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cedula_usuario")
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-	User usuario;
+	private User usuario;
 	
-	Double ivaventa;
+	private Double ivaventa;
 	
-	Double total_venta;
+	private Double total_venta;
 	
-	Double valor_venta;
+	private Double valor_venta;
 	
 	protected Sale() {
 		
