@@ -1,6 +1,6 @@
-CREATE DATABASE distribuidoramintic;
+CREATE DATABASE db_sede_bogota;
 
-USE distribuidoramintic;
+USE db_sede_bogota;
 
 CREATE TABLE clientes(
 	cedula_cliente BIGINT(20) NOT NULL,
@@ -65,6 +65,11 @@ PRIMARY KEY (codigo_detalle_venta),
 FOREIGN KEY(codigo_producto) REFERENCES productos(codigo_producto),
 FOREIGN KEY(codigo_venta) REFERENCES ventas(codigo_venta)
 );
+
+# password admininicial: admin123456
+INSERT INTO usuarios (cedula_usuario, email_usuario, nombre_usuario, password, usuario)
+values ("0", "admininicial@falso.com", "Administrador inicial", "$2a$10$sAWQ7SL/np50tTFs4ZEsseHvKGnfpvrQTqCEtkWtfj.Ssb4gagijC", "admininicial");
+
 
 
 

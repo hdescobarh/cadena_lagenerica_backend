@@ -1,12 +1,8 @@
-#DROP DATABASE tienda_test;
-#CREATE DATABASE tienda_test;
-USE tienda_test;
+#DROP DATABASE db_sede_bogota;
+#CREATE DATABASE db_sede_bogota;
+USE db_sede_bogota;
 
 # Datos prueba para modulo usuarios
-
-# para admininicial el pss: admin123456
-INSERT INTO usuarios (cedula_usuario, email_usuario, nombre_usuario, password, usuario)
-values ("0", "admininicial@falso.com", "Administrador inicial", "$2a$10$sAWQ7SL/np50tTFs4ZEsseHvKGnfpvrQTqCEtkWtfj.Ssb4gagijC", "admininicial");
 
 INSERT INTO usuarios (cedula_usuario, email_usuario, nombre_usuario, password, usuario)
 values ("10111", "usuario1@falso.com", "Nombre1 Apellido1", "$2a$10$g/GAPN7TEU.V4TeouTWm3OfEd9aMzd4jVX3U1QbchvUHJDXn.2O7S", "username1");
