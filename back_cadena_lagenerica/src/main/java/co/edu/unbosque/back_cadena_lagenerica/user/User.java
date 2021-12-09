@@ -4,10 +4,15 @@ import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.persistence.Id;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuarios",
+uniqueConstraints = { 
+		@UniqueConstraint(columnNames = "usuario"),
+		@UniqueConstraint(columnNames = "email_usuario") 
+	})
 public class User {
 
 	@Id
