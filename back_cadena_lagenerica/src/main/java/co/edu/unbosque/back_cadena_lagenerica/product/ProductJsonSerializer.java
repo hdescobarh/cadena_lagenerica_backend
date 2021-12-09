@@ -16,12 +16,12 @@ public class ProductJsonSerializer extends JsonSerializer<Product> {
 	public void serialize(Product value, JsonGenerator gen,
 			SerializerProvider serializers) throws IOException, JsonProcessingException {
 				
-		gen.writeNumberField("codigo_producto", value.codigo_producto);
-		gen.writeNumberField("ivacompra", value.ivacompra);
-		gen.writeNumberField("nitproveedor", value.proveedor.getNitproveedor());
-		gen.writeStringField("nombre_producto", value.nombre_producto);
-		gen.writeNumberField("precio_compra", value.precio_compra);
-		gen.writeNumberField("precio_venta", value.precio_venta);
+		gen.writeNumberField("codigo_producto", value.getCodigo_producto());
+		gen.writeNumberField("ivacompra", value.getIvacompra());
+		gen.writeNumberField("nitproveedor", value.getProveedor().getNitproveedor());
+		gen.writeStringField("nombre_producto", value.getNombre_producto());
+		gen.writeNumberField("precio_compra", value.getPrecio_compra());
+		gen.writeNumberField("precio_venta", value.getPrecio_venta());
 
 			
 		}

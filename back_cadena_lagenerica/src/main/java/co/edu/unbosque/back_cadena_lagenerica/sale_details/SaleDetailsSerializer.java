@@ -17,13 +17,13 @@ public class SaleDetailsSerializer extends JsonSerializer<SaleDetails>{
 	public void serialize(SaleDetails value, JsonGenerator gen, SerializerProvider serializers)
 			throws IOException, JsonProcessingException {
 
-		gen.writeNumberField("codigo_detalle_venta", value.codigo_detalle_venta);
-		gen.writeNumberField("cantidad_producto", value.cantidad_producto);
-		gen.writeNumberField("codigo_producto", value.producto.getCodigo_producto());
-		gen.writeNumberField("codigo_venta", value.venta.getCodigo_venta());
-		gen.writeNumberField("valor_total", value.valor_total);
-		gen.writeNumberField("valor_venta", value.valor_venta);
-		gen.writeNumberField("valoriva", value.valoriva);
+		gen.writeNumberField("codigo_detalle_venta", value.getCodigo_detalle_venta());
+		gen.writeNumberField("cantidad_producto", value.getCantidad_producto());
+		gen.writeNumberField("codigo_producto", value.getProducto().getCodigo_producto());
+		gen.writeNumberField("codigo_venta", value.getVenta().getCodigo_venta());
+		gen.writeNumberField("valor_total", value.getValor_total());
+		gen.writeNumberField("valor_venta", value.getValor_venta());
+		gen.writeNumberField("valoriva", value.getValoriva());
 		
 	}
 	
