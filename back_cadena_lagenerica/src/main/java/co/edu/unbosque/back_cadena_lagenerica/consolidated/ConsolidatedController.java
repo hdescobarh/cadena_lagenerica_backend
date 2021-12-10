@@ -35,10 +35,10 @@ public class ConsolidatedController {
 
 	@GetMapping("/listar")
 	ResponseEntity<CollectionModel<EntityModel<Consolidated>>> findAll() {
-		List<EntityModel<Consolidated>> clientes = consolidatedService.findAll().stream()
+		List<EntityModel<Consolidated>> consolidados = consolidatedService.findAll().stream()
 				.map(consolidatedAssembler::toModel).collect(Collectors.toList());
 		return ResponseEntity.ok(
-				CollectionModel.of(clientes, linkTo(methodOn(ConsolidatedController.class).findAll()).withSelfRel()));
+				CollectionModel.of(consolidados, linkTo(methodOn(ConsolidatedController.class).findAll()).withSelfRel()));
 	}
 
 	@PostMapping("/guardar")
@@ -74,7 +74,7 @@ public class ConsolidatedController {
 		Consolidated updatedCustomer = consolidatedService.findById(newConsolidated.getId()).map(consolidated -> {
 			consolidated.setId(newConsolidated.getId());
 			consolidated.setCiudad(newConsolidated.getCiudad());
-			consolidated.setTotal_ventas(newConsolidated.getTotal_ventas());
+			consolidated.setTotal_ventas(consolidated.getTotal_ventas() + newConsolidated.getTotal_ventas());
 			return consolidatedService.save(consolidated);
 		}).orElseGet(() -> {
 			return consolidatedService.save(newConsolidated);
