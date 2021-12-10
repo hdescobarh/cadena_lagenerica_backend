@@ -10,6 +10,10 @@
 
 Este repositorio contiene la REST API desarrollada como parte del proyecto final para el ciclo de Desarrollo Web del programa [Misión TIC 2022](https://www.misiontic2022.gov.co/portal/). La parte del frontend se encuentra en el siguiente [enlace](https://github.com/hdescobarh/cadena_lagenerica_frontend)
 
+## CORS
+
+Está configurado para aceptar peticiones de https&#58;&#47;&#47;127&period;0&period;0&period;1&period;5500. Para modificarlo cambiar el parametro  *allowedOrigins*  en el *corsConfigurer()* de la clase *BackCadenaLagenericaApplication*.
+
 ## Archivos adicionales
 
 - Script SQL para crear el esquema de [base de datos](./make_base_database.sql) e ingresar el usuario inicial. *username* = admininicial, *password* = admin123456.
