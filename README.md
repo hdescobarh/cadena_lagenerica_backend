@@ -12,7 +12,7 @@ Este repositorio contiene la REST API desarrollada como parte del proyecto final
 
 ## CORS
 
-Está configurado para aceptar peticiones de https&#58;&#47;&#47;127&period;0&period;0&period;1&period;5500. Para modificarlo cambiar el parametro  *allowedOrigins*  en el *corsConfigurer()* de la clase *BackCadenaLagenericaApplication*.
+Está configurado para aceptar peticiones de 127&period;0&period;0&period;1&colon;5500. Para modificarlo cambiar el parametro  *allowedOrigins*  en el *corsConfigurer()* de la clase *BackCadenaLagenericaApplication*.
 
 ## Archivos adicionales
 
