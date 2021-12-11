@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "http://127.0.0.1:7800/")
 @RequestMapping("/consolidado")
 public class ConsolidatedController {
 
