@@ -11,6 +11,9 @@
 				{
 					"name": "login usuario",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [],
 						"url": {
@@ -885,7 +888,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"cliente\": {\r\n        \"cedula_cliente\": 90111\r\n        },\r\n    \"usuario\": {\r\n        \"cedula_usuario\": 10111\r\n        },\r\n    \"ivaventa\": 19.0,\r\n    \"total_venta\": 0,\r\n    \"valor_venta\": 0\r\n    }",
+							"raw": "{\r\n    \"cliente\": {\r\n        \"cedula_cliente\": 90111\r\n        },\r\n    \"usuario\": {\r\n        \"cedula_usuario\": 10111\r\n        },\r\n    \"ivaventa\": 0,\r\n    \"total_venta\": 0,\r\n    \"valor_venta\": 0\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1038,7 +1041,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "",
+							"raw": "{\r\n    \"cantidad_producto\": 3,\r\n    \"producto\": {\"codigo_producto\": 808005 },\r\n    \"venta\": {\"codigo_venta\": 2 },\r\n    \"valor_total\": 3100481.1,\r\n    \"valor_venta\": 165690.0,\r\n    \"valoriva\": 1890}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1082,6 +1085,160 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "7- API Consolidado",
+			"item": [
+				{
+					"name": "listar consolidad",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/consolidado/listar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"consolidado",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar consolidado",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/consolidado/20211209",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"consolidado",
+								"20211209"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "guardar consolidad",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ciudad\": \"bogota_principal\",\r\n    \"id\": 20211209,\r\n    \"total_ventas\": 30500000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/consolidado/guardar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"consolidado",
+								"guardar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar consolidado",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ciudad\": \"bogota_principal\",\r\n    \"id\": 20211210,\r\n    \"total_ventas\": 500000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/consolidado/actualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"consolidado",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar consolidado",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/consolidado/eliminar/20211209",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"consolidado",
+								"eliminar",
+								"20211209"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJMYUdlbmVyaWNhSldUIiwic3ViIjoiYWRtaW5pbmljaWFsIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYzOTIxMTQ2OCwiZXhwIjoxNjM5MjEyMDY4fQ.r8YHafd65tNGfkJT9ts29wjIhqUB0P1FFTvXol8Zc_SnUtcd6v3qoEHurNiVXhuOCQ2-d3bXXZRnA9JdohcwKw",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
