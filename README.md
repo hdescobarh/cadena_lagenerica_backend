@@ -20,8 +20,13 @@ Esta implementado con [Spring Security](https://spring.io/projects/spring-securi
 
 ### CORS
 
+- Configuración para sede actual:
+
 Está configurado para aceptar peticiones de 127&period;0&period;0&period;1&colon;5500. Para modificarlo cambiar el parametro  *allowedOrigins*  en el *corsConfigurer()* de la clase *BackCadenaLagenericaApplication*.
 
+- Configuración acceso sedes satelites:
+
+Solo la sede principal tiene modulo de consolidado y para que las sucursales satelite puedan acceder se configura en el paquete **consolidate**, la clase **ConsolidateController" en la anotación @CrossOrigin. Esta configurado actualmente con 127&period;0&period;0&period;1&colon;7800 
 
 ## Archivos adicionales
 
