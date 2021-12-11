@@ -44,6 +44,7 @@ public class UserController {
 				String token = userService.getJwtToken(username);
 				User user = new User();
 				user.setUsuario(username);
+				user.setCedula_usuario(found_user.get().getCedula_usuario());
 				user.setToken(token);
 				return ResponseEntity.ok(user);
 			} else {
